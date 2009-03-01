@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
 use strict;
-use XML::FeedPP;
 chdir '/home/awwaiid/tlt/darcs-git';
 
+# Hard-wired list of things mirrored on github
 my %github = (
   'perl-Continuity' => 1,
   'perl-EPFarms-Panel' => 1,
@@ -22,9 +22,6 @@ my @projects = map {
     s/\//-/g;
     { path => $path, name => $_, url => $url}
   } @darcs_dirs;
-
-my $all_feed = XML::FeedPP::RSS->new();
-my @all_items;
 
 foreach my $project (@projects) {
   print "Processing $project->{name}\n";
